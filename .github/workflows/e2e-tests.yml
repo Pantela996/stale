@@ -21,7 +21,7 @@ jobs:
         with:
           stale-issue-message: 'This issue is stale'
           stale-pr-message: 'This PR is unstale'
-          debug-only: true
+          days-before-stale: 0
           labels-to-add-when-stale: 'test'
       - name: Print outputs
         run: echo ${{ format('{0},{1}', toJSON(steps.stale.outputs.staled-issues-prs), toJSON(steps.stale.outputs.closed-issues-prs)) }}
