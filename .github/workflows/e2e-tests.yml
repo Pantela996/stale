@@ -11,6 +11,9 @@ on:
     paths-ignore:
       - '**.md'
 
+permissions:
+  pull-requests: write
+
 jobs:
   dry-run-test-2: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
