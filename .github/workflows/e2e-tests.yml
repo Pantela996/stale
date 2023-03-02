@@ -11,6 +11,9 @@ on:
     paths-ignore:
       - '**.md'
 
+permissions:
+  pull-requests: write
+
 jobs:
   dry-run-test-2: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
@@ -20,8 +23,8 @@ jobs:
         id: stale
         with:
           stale-issue-message: 'This issue is stale'
-          stale-pr-message: 'This PR is stale'
-          debug-only: true
+          stale-pr-message: 'This PR is unstale'
+          days-before-stale: 0
           labels-to-add-when-stale: 'test'
       - name: Print outputs
         run: echo ${{ format('{0},{1}', toJSON(steps.stale.outputs.staled-issues-prs), toJSON(steps.stale.outputs.closed-issues-prs)) }}
